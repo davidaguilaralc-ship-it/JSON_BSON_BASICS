@@ -1,0 +1,80 @@
+{
+    "ejemplos_json" :{
+        "descripcion":"Ejemplos de un documento JSON con varios tipos de datos y estructuras anidadas.",
+        "datos":{
+            "nombre": "Carlos López",
+            "edad": 30,
+            "activo": true,
+            "hobbies": ["fútbol", "cocina", "viajar"],
+            "direccion": {
+                "calle": "Calle Falsa 123",
+                "ciudad": "Ciudad Mexico",
+                "pais": "País Mexico"
+            },
+            "contactos": null
+              
+        },
+        "notas": "Este documento JSON puede representar diferentes tipos de datos y estructuras complejas",
+        "Ejemplo_documento_MongoDB":{
+            "_id": "507f1f77bcf86cd799439011",
+            "producto": "Smarthphone Samsung Galaxy S21",
+            "precio": 799.99,
+            "disponible": true,
+            "categorias": ["Electrónica", "Móviles", "smartphones"],
+            "procesador": "exynos 2100",
+            "ram": "8gb",
+            "almacenamiento": "128gb",
+            "pantalla": "6.2 pulgadas",
+            "bateria": "4000 mAh"
+        },
+        "fecha_creacion": "2026-06-01T12:00:00Z",
+        "reviews": [
+            {
+                "usuario": "teachlover",
+                "comentario": "Excelente redimiento y camara."
+               
+            }
+           
+
+
+        ]
+    
+        
+
+        }
+        
+        
+
+
+        
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
