@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demostración de JSON</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --bg: #f8f9fa;
+            --code-bg: #282c34;
+            --code-text: #abb2bf;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--primary);
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        /* Contenedor principal en malla (Grid) */
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .panel {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            margin-top: 0;
+            color: var(--accent);
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Estilo para el código JSON */
+        #json-pre {
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            margin: 0;
+            height: 300px; /* Altura fija para alinear paneles */
+        }
+
+        /* Estilo para los datos procesados */
+        .datos-item {
+            background: #fdfdfd;
+            border: 1px solid #edf2f7;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+        }
+
+        .label {
+            display: block;
+            font-weight: bold;
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .value {
+            font-size: 1rem;
+            color: #2d3748;
+        }
+
+        .type-tag {
+            font-size: 0.7rem;
+            background: #e2e8f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #4a5568;
+            margin-left: 8px;
+        }
+
+        /* Ajuste para celulares */
+        @media (max-width: 800px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            #json-pre {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Demostración de JSON: ¿Para qué sirve?</h1>
+
+    <div class="container">
+        
+        <div class="panel">
+            <h2>1. JSON (Texto Plano)</h2>
+            <p>Así es como viajan los datos por la red:</p>
+            <pre id="json-pre"></pre>
+        </div>
+
+        <div class="panel">
+            <h2>2. Datos Utilizados</h2>
+            <p>Así los interpreta el navegador para el usuario:</p>
+            <div id="datosExtraidos"></div>
+        </div>
+
+    </div>
+
+    <script>
+        const miJSON = {
+            "ejemplo_json": {
+                "descripcion": "Ejemplo de documento JSON con varios tipos de datos",
+                "nombre": "David A.",
+                "edad": 15,
+                "hobbies": ["Futbol", "Videojuegos", "Programar"],
+                "direccion": {
+                    "calle": "F.P",
+                    "numero": 123,
+                    "ciudad": "Escobedo",
+                    "pais": "México"
+                },
+                "contacto": null
+            },
+            "nota": "Este ejemplo muestra cómo JSON organiza la información."
+        };
+
+        // 1. Mostrar JSON formateado en el panel oscuro
+        document.getElementById("json-pre").textContent = JSON.stringify(miJSON, null, 2);
+
+        // 2. Extraer datos y mostrarlos de forma bonita
+        const datos = miJSON.ejemplo_json;
+        const datosDIV = document.getElementById("datosExtraidos");
+
+        datosDIV.innerHTML = `
+            <div class="datos-item">
+                <span class="label">Usuario</span>
+                <span class="value">${datos.nombre}</span>
+                <span class="type-tag">${typeof datos.nombre}</span>
+            </div>
+            
+            <div class="datos-item">
+                <span class="label">Edad</span>
+                <span class="value">${datos.edad} años</span>
+                <span class="type-tag">${typeof datos.edad}</span>
+            </div>
+
+            <div class="datos-item">
+                <span class="label">Ubicación</span>
+                <span class="value">${datos.direccion.calle} #${datos.direccion.numero}, ${datos.direccion.ciudad}</span>
+                <span class="type-tag">object</span>
+            </div>
+
+            <div class="datos-item">
+                <span class="label">Estado de Contacto</span>
+                <span class="value">${datos.contacto || "No proporcionado"}</span>
+                <span class="type-tag">null</span>
+            </div>
+        `;
+    </script>
+
+</body>
+</html>
